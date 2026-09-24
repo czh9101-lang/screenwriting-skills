@@ -4,7 +4,7 @@
 
 26 agent skills (for [Claude Code](https://docs.anthropic.com/en/docs/claude-code/skills) and [OpenAI Codex](https://developers.openai.com/codex/build-skills)) for screenwriting, television writing and dramaturgy, distilled from 47 craft books and 23 volumes of published scripts, scores and plays (Chinese, American, British, Japanese and Korean).
 
-The `SKILL.md` files follow the open [agentskills.io](https://agentskills.io) standard and are shared by both agents: install once and it works in both.
+The skill files follow the open [agentskills.io](https://agentskills.io) standard and are shared by both agents: install once and it works in both.
 
 **Ask in your own language.** The skill bodies are written in Chinese, because most of the sources are Chinese originals or Chinese translations. That is only where the text lives: ask in English, Japanese, Korean or French and you get the answer in that language. See [Multilingual support](#multilingual-support) for why there is a single source tree.
 
@@ -50,7 +50,7 @@ codex plugin marketplace add jtydhr88/screenwriting-skills
 # Plugins → select "Screenwriting Skills" → Install
 ```
 
-The same 26 `SKILL.md` files are shipped through the plugin's `skills/` directory, with no duplication and no rewriting.
+The same 26 skill files are shipped through the plugin, with no duplication and no rewriting.
 
 #### Personal skills (all projects)
 
@@ -95,7 +95,7 @@ This is a deliberate decision, and it was not the first one. There was an Englis
 So the line is drawn at the source, and the runtime does the rest:
 
 - **Output language follows your question.** Ask in French, get French. No flag, no separate install.
-- **Terminology is anchored to the original term.** The craft vocabulary of this field is originally English: *logline*, *act out*, *beat sheet*, *showrunner*, *staff writer*. The Chinese in the source books (计程绳, 出幕, 节拍表, 剧目管理人, 试用编剧) is the translation, and different translators chose differently. [`sw-workflow/terms.md`](plugins/screenwriting/skills/sw-workflow/terms.md) maps each concept back to its original term, so the agent restores the word and does not invent one. The same table serves all languages at once, because a Japanese or French screenwriter also says *act out* and *logline*.
+- **Terminology is anchored to the original term.** The craft vocabulary of this field is originally English: *logline*, *act out*, *beat sheet*, *showrunner*, *staff writer*. The Chinese in the source books (计程绳, 出幕, 节拍表, 剧目管理人, 试用编剧) is the translation, and different translators chose differently. The term table in `sw-workflow` maps each concept back to its original term, so the agent restores the word. The same table serves all languages at once, because a Japanese or French screenwriter also says *act out* and *logline*.
 - **Terms with no equivalent keep their original form plus a gloss.** 戏眼, 扣子, ト書き and 決定稿 come through as `戏眼 (xìyǎn — the one-line core attraction of an episode)`.
 - **Your script stays in your script's language.** Discussing a Chinese screenplay in English is normal; the conversation switches language, the draft does not.
 
@@ -119,14 +119,14 @@ Four layers. A feature project uses layers 1, 3 and 4; a series or stage project
 
 | Skill | What it covers | Main sources |
 |---|---|---|
-| `sw-workflow` | Project orchestrator: a feature/stage stage-map (premise → structure → character → scenes → draft → revision → submission) **and a separate series stage table (S0–S7: engine → character web & season arc → documents → pilot structure → break story → draft → submission)**, naming which skill to call at each stage, per-stage deliverables and advisory exit checks, plus a `story-bible.md` convention (with a series supplement) that keeps project state in one file across sessions | meta-skill, no new sources |
+| `sw-workflow` | Project orchestrator: a feature/stage stage-map (premise → structure → character → scenes → draft → revision → submission) **and a separate series stage table (S0–S7: engine → character web & season arc → documents → pilot structure → break story → draft → submission)**, naming which skill to call at each stage, per-stage deliverables and advisory exit checks, plus a story-bible convention (with a series supplement) that keeps project state in one file across sessions | meta-skill, no new sources |
 | `sw-story-structure` | Paradigm & plot points, Save the Cat beats and board, McKee's event/scene/sequence/act, inciting incident, progressive complications, crisis-climax-resolution, subplots, Hoxter's nine beats, Hicks' attraction/anticipation/satisfaction, Lu Jun's 起承转合, eight openings, eight endings | Field, Snyder, McKee *Story*, Hoxter, Hicks, Lu Jun |
 | `sw-premise-theme` | Premise as tyrant, controlling idea (value + cause), the "third rail" (desire vs misbelief), five premise questions, logline tests, 选材/开掘/视角/戏核 | Egri, McKee, Cron, Hicks, Hoxter, Snyder, Lu Jun |
 | `sw-character-conflict` | Three-dimensional character, orchestration, unity of opposites, pivotal character, rising vs static vs jumping conflict; Freud/Erikson/Jung/Campbell/Murdock/Adler/May for motive; 人物要活八要, 对手要强 | Egri, Indick, McKee, Hicks, Cron, Snyder, Lu Jun |
 | `sw-dialogue` | Dialogue as action, said/unsaid/unsayable, exposition as ammunition, beats as gerunds, credibility/language/content/design flaws, character-specific vocabulary; 语言要美, 戏曲唱词三好 | McKee *Dialogue*, Walter, Hicks, Lu Jun, Egri, Snyder, Mei Feng |
 | `sw-scene-craft` | Scene as value turn, five-step scene analysis, enter late leave early, pacing and transitions, action over talk; 意趣要足, 细节要妙, 道具要精 | McKee, Field, Hicks, Walter, Henson, Hoxter, Mei Feng, Lu Jun |
-| `sw-format-adaptation` | Spec format hard rules, typographic grid, element conventions, Fountain output contract with forced markers for Chinese, 场号制 and Japanese 柱・ト書き formats, outline→treatment→script chain, revision, adaptation principles | Henson, Walter, Hicks, Field, McKee, Hoxter, Diamond & Weissman, Bork; grid/Fountain/Asian formats are industry conventions |
-| `sw-truby-anatomy` | Organic story anatomy kept side by side with the Field/Snyder page maps, not replacing them: the designing principle (premise expanded into deep structure), the seven key steps and all twenty-two steps as the organic spine, the middle-act machinery the beat sheets lack (ghost, fake-ally opponent, plan, opponent's drive, ally's attack, fake defeat, three revelation-and-decision pairs, audience revelation, visit to death, moral decision), four-corner opposition, the moral-argument chain with the hero-opponent power-balance rule, scene weave with structure-step tags and storyline numbers, the accordion rule | John Truby, *The Anatomy of Story* |
+| `sw-format-adaptation` | Spec format hard rules, typographic grid, element conventions, Fountain output contract with forced markers for Chinese, 场号制 and Japanese 柱・ト書き formats, outline→treatment→script chain, revision, adaptation principles | Henson, Walter, Hicks, Field, McKee, Hoxter, Diamond & Weissman, Bork; grid/plain-text/Asian formats are industry conventions |
+| `sw-truby-anatomy` | Organic story anatomy kept side by side with the Field/Snyder page maps: the designing principle (premise expanded into deep structure), the seven key steps and all twenty-two steps as the organic spine, the middle-act machinery the beat sheets lack (ghost, fake-ally opponent, plan, opponent's drive, ally's attack, fake defeat, three revelation-and-decision pairs, audience revelation, visit to death, moral decision), four-corner opposition, the moral-argument chain with the hero-opponent power-balance rule, scene weave with structure-step tags and storyline numbers, the accordion rule | John Truby, *The Anatomy of Story* |
 | `sw-genre-anatomy` | Genres as beat systems, kept beside the seven steps and the page maps: the three rules (hit every beat, mix three or four genres, transcend the primary genre), the ladder and families of twelve genres, each with a hero/opponent/world/plot-shape template, full beat list, hard rules with failure conditions, subgenres and transcendent paths (Anti-Western, Social Fantasy, Cosmic Detective, True Love, the Morality beats, the Sports and War beats), a genre-mixing worksheet and a twelve-question diagnostic | John Truby, *The Anatomy of Genres* |
 
 ### 2. Medium layer: what a feature does not teach
@@ -166,7 +166,7 @@ Four layers. A feature project uses layers 1, 3 and 4; a series or stage project
 | `succession-series-writing` | All four seasons of *Succession*, 39 shooting scripts, as a working method for the streaming ensemble: the invisible-act tests, container episodes built on a ceremony's running order, pressure chambers, one core question per episode, humiliation passed downward, stage directions carrying subtext and "maybe", reversals turned on one word, writing long, alts, the mega-chart, and engineering an ending once the plot engine loses pressure | Jesse Armstrong, *Succession: The Complete Scripts* I–IV (Faber), with Frank Rich's and Lucy Prebble's essays |
 | `sw-series-case-studies` | Worked episodes from primary texts: Sorkin's six *West Wing* teleplays (act-page tables, eight act-out types), Chase's five *Sopranos* scripts, Fellowes's annotated *Downton Abbey* season two (19 storylines, 419 author footnotes), *Fleabag: The Scriptures*, Calvisi's eight minute-by-minute pilot breakdowns, Landau's 47-series structure appendix, Miller's *Hannibal* and *HTGAWM* scene breakdowns, Goldberg & Rabkin's beat sheets, Sakamoto Yuji and Noh Hee-kyung | the published scripts and the case chapters of the books above |
 
-Each skill has a `SKILL.md` (principles, checklists, workflow), and all but one also carry a `reference.md` (tables, worked analyses, excerpts). Three skills split their tables across several files so each can be read in one pass: `sw-series-case-studies` into `reference.md` (the four English script collections), `reference-pilots.md` (pilot beat sheets and structure tables from the craft books) and `reference-asia.md` (the Japanese and Korean texts); `sw-series-engine-bible` into engine teardowns, document field tables and filled samples; `sw-chinese-series-practice` into the craft reference, format and planning samples, the six adaptation cases and the content red lines.
+Each skill has a main file (principles, checklists, workflow), and all but one also carry a reference file (tables, worked analyses, excerpts). Three skills split their tables across several files so each can be read in one pass: `sw-series-case-studies` into the four English script collections, the pilot beat sheets and structure tables from the craft books, and the Japanese and Korean texts; `sw-series-engine-bible` into engine teardowns, document field tables and filled samples; `sw-chinese-series-practice` into the craft reference, format and planning samples, the six adaptation cases and the content red lines.
 
 ## Stage genres
 
@@ -178,7 +178,7 @@ Film and television are covered. The stage is covered in part, the rest is plann
 
 **What is here now.** Four skills, distilled from 25 sources (twelve method and theory books, thirteen full scripts, scores and collected plays): a method skill for each vocal system and a full-script case library for each. The two method skills open with a boundary table that says, with sources, which general skills apply to an opera script and which do not, and share one file of common aesthetics and staging. Classical texts were taken from public-domain editions and checked against the originals; where a scan could not be verified (some 吴梅 and 白蛇传 passages) the notes say so, and the skills do not build rules on them.
 
-**What is planned, in order.** Two gaps in the opera layer first: a per-tradition rhyme table for 豫剧 (the sources only give the principle, not the table) and a fourth-system edge for 粤剧, whose Cantonese phonology may need its own treatment. Then the spoken-theatre method China's own tradition adds beyond Chekhov: 曹禺's pressure-chamber structure and 老舍's portrait-gallery structure with no main line. Musical theatre last, because song carrying narrative is a genuinely different rule set and none of the current sources covers it.
+**What is planned, in order.** Two gaps in the opera layer first: a per-tradition rhyme table for 豫剧 (the sources only give the principle) and a fourth-system edge for 粤剧, whose Cantonese phonology may need its own treatment. Then the spoken-theatre method China's own tradition adds beyond Chekhov: 曹禺's pressure-chamber structure and 老舍's portrait-gallery structure with no main line. Musical theatre last, because song carrying narrative is a genuinely different rule set and none of the current sources covers it.
 
 **What is not planned.** Short-form vertical drama and AI-generated comic drama, whose logic is distribution, with no dramaturgy to distil. Skills split by subject, by director, or by regional 剧种.
 
@@ -198,12 +198,21 @@ Film and television are covered. The stage is covered in part, the rest is plann
 
 ## Conventions
 
-- `SKILL.md` frontmatter: `name` (kebab-case, matches the folder) and a long English `description` ending in "Use when …", with Chinese keywords in parentheses for triggering.
 - Skill bodies are Chinese; numbered principles, tables and checklists; cross-references between skills by folder name. Output language follows the user; see [Multilingual support](#multilingual-support).
-- Agent-neutral by design: the skill files name no agent and use no agent-specific syntax, so the same `SKILL.md` works under Claude Code, Codex, or anything else that reads the agentskills.io format. Each plugin carries a `.claude-plugin/plugin.json` and a `.codex-plugin/plugin.json` over one shared `skills/` directory.
+- Agent-neutral by design: the skill files name no agent and use no agent-specific syntax, so the same skill file works under Claude Code, Codex, or anything else that reads the agentskills.io format.
 - Where the sources disagree, both positions are kept side by side with a note on when to use which, for example Douglas's four-act grid against Oberg's "act breaks are only the size of the sausages", or theme-as-design against theme-as-emergent.
 - Industry facts carry the year of their source, because rates, platforms and act counts date quickly; Chinese policy figures are marked 2014/2016.
-- `reference.md` holds worked examples and quotations so `SKILL.md` stays under ~40 KB.
-- License: MIT for the skills themselves, see [LICENSE](LICENSE). The quotations from the source books and scripts are not covered by it and remain the property of their authors, translators and publishers, see [NOTICE](NOTICE).
+
+## Technical notes
+
+- **Files in each skill**: the main file is `SKILL.md`, the reference file is `reference.md`. `reference.md` holds worked examples and quotations so `SKILL.md` stays under ~40 KB. The three files of `sw-series-case-studies` are `reference.md`, `reference-pilots.md` and `reference-asia.md`.
+- **Frontmatter**: every `SKILL.md` has `name` (kebab-case, matches the folder) and a long English `description` ending in "Use when …", with Chinese keywords in parentheses for triggering.
+- **Plugins**: each plugin carries a `.claude-plugin/plugin.json` and a `.codex-plugin/plugin.json` over one shared `skills/` directory, so Claude Code and Codex read the same 26 `SKILL.md` files.
+- **Term table**: [`sw-workflow/terms.md`](plugins/screenwriting/skills/sw-workflow/terms.md).
+- **Story bible**: `sw-workflow` keeps project state in the file `story-bible.md`.
+
+## License
+
+MIT for the skills themselves, see [LICENSE](LICENSE). The quotations from the source books and scripts are not covered by it and remain the property of their authors, translators and publishers, see [NOTICE](NOTICE).
 
 Sister project, same idea applied to Japanese composition and arranging: [japanese-composition-skills](https://github.com/jtydhr88/japanese-composition-skills).

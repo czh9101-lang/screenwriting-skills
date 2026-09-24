@@ -4,7 +4,7 @@
 
 脚本執筆・テレビドラマ・劇作法のための 26 個のエージェントスキル（[Claude Code](https://docs.anthropic.com/en/docs/claude-code/skills) と [OpenAI Codex](https://developers.openai.com/codex/build-skills) 対応）。47 冊の理論書と 23 巻の出版シナリオ・曲譜・戯曲（中国・アメリカ・イギリス・日本・韓国）から抽出したもの。
 
-`SKILL.md` はオープン規格 [agentskills.io](https://agentskills.io) に準拠し、両方のエージェントで共有されます。一度入れれば、どちらでも動きます。
+スキルファイルはオープン規格 [agentskills.io](https://agentskills.io) に準拠し、両方のエージェントで共有されます。一度入れれば、どちらでも動きます。
 
 **日本語でそのまま質問してください。** スキル本文は中国語で書かれています。出典の多くが中国語の原著または中国語訳だからです。これは本文の置き場所の話にすぎず、日本語で訊けば日本語で返ってきます。なぜ言語ごとにツリーを分けないのかは[多言語対応](#多言語対応)を参照してください。
 
@@ -66,13 +66,13 @@ codex plugin marketplace add jtydhr88/screenwriting-skills
 
 **ソースツリーは一つ、言語は実行時に解決する。** スキルは中国語で一度だけ書かれ、エージェントが質問された言語で返します。
 
-これは考えた末の決定であり、最初の決定ではありませんでした。かつて英語版がありました。20 個のスキルをすべて翻訳した並行プラグイン `screenwriting-en` で、[#3](https://github.com/jtydhr88/screenwriting-skills/issues/3) で提案され、実装され、マージされました。そして削除されました。それを退けた論拠は、他のどの言語にも等しく当てはまります。中国語が読めない読者に翻訳されたツリーが必要なら、英語が読めない読者にも必要であり、次は日本語、その次は韓国語、フランス語、ロシア語です。5 言語なら 230 ファイルが各々勝手にずれていき、どれが古いのかを教えてくれるものは何もありません。翻訳作業そのものは大した手間ではありません。本当のコストは、**一度フォークしてしまえば、二度目を断る原則的な根拠が失われる**ことです。
+これは考えた末の決定であり、最初の決定ではありませんでした。かつて英語版がありました。20 個のスキルをすべて翻訳した並行プラグイン `screenwriting-en` で、[#3](https://github.com/jtydhr88/screenwriting-skills/issues/3) で提案され、実装され、マージされました。そして削除されました。それを退けた論拠は、他のどの言語にも等しく当てはまります。中国語が読めない読者に翻訳されたツリーが必要なら、英語が読めない読者にも必要であり、次は日本語、その次は韓国語、フランス語、ロシア語です。5 言語なら 230 ファイルが各々勝手にずれていき、どれが古いのかを教えてくれるものは何もありません。翻訳作業そのものはわずかな手間で済みます。本当のコストは、**一度フォークしてしまえば、二度目を断る原則的な根拠が失われる**ことです。
 
 そこで線はソースの側に引き、残りは実行時に処理します：
 
 - **出力言語は質問の言語に従う。** 日本語で訊けば日本語で返る。フラグも別インストールも不要。
-- **用語は原語に錨を下ろす。** この分野の専門語はもともと英語です。*logline*、*act out*、*beat sheet*、*showrunner*、*staff writer*。出典の中国語（計程繩、出幕、節拍表、劇目管理人、試用編劇）のほうが訳語であり、訳者によって選択が違います。[`sw-workflow/terms.md`](plugins/screenwriting/skills/sw-workflow/terms.md) が各概念を原語に対応づけるので、エージェントは語を**復元**します。そしてこの一枚の表がすべての言語に同時に効きます。日本語で書く脚本家も現場では act out や logline と言うからです。
-- **対応語のない語は原語のまま、注釈を添える。** 戏眼、扣子 は英語に押し込まず、`戏眼 (xìyǎn — 各話の一言で指させる中心的な見どころ)` の形で出ます。日本語の術語（柱・ト書き・セリフ・決定稿）は `sw-format-adaptation` が正面から扱っており、日本語で訊けばそのまま日本語の術語で返ります。
+- **用語は原語に錨を下ろす。** この分野の専門語はもともと英語です。*logline*、*act out*、*beat sheet*、*showrunner*、*staff writer*。出典の中国語（計程繩、出幕、節拍表、劇目管理人、試用編劇）のほうが訳語であり、訳者によって選択が違います。`sw-workflow` の用語表が各概念を原語に対応づけるので、エージェントは語を**復元**します。そしてこの一枚の表がすべての言語に同時に効きます。日本語で書く脚本家も現場では act out や logline と言うからです。
+- **対応語のない語は原語のまま、注釈を添える。** 戏眼、扣子 は `戏眼 (xìyǎn — 各話の一言で指させる中心的な見どころ)` の形で出ます。日本語の術語（柱・ト書き・セリフ・決定稿）は `sw-format-adaptation` が正面から扱っており、日本語で訊けばそのまま日本語の術語で返ります。
 - **脚本本文は作品自身の言語のまま。** 中国語の脚本を日本語で議論するのは普通のことです。会話の言語は変わっても、原稿の言語は変わりません。
 
 これと引き換えに失われるのは**監査可能性**です。中国語が読めなければ、指示ファイルそのものは読めず、エージェントによるその報告しか読めません。これは実在するコストであり、削除された英語版が唯一本当に買っていたものでした。しかし恒久的な 5 方向の保守負担に見合うものではありませんでした。
@@ -99,12 +99,12 @@ codex plugin marketplace add jtydhr88/screenwriting-skills
 
 | 層 | スキル |
 |---|---|
-| 1 | `sw-workflow`（進行管理と `story-bible.md`）· `sw-story-structure` · `sw-premise-theme` · `sw-character-conflict` · `sw-dialogue` · `sw-scene-craft` · `sw-format-adaptation` |
+| 1 | `sw-workflow`（進行管理とストーリーバイブル）· `sw-story-structure` · `sw-premise-theme` · `sw-character-conflict` · `sw-dialogue` · `sw-scene-craft` · `sw-format-adaptation` |
 | 2 | 連続ドラマ：`sw-series-structure` · `sw-series-engine-bible` · `sw-writers-room` · `sw-sitcom-comedy`<br>舞台：`sw-chinese-opera-banqiang` · `sw-chinese-opera-qupai`（二つの声腔体系の方法）· `sw-chinese-opera-banqiang-cases` · `sw-chinese-opera-qupai-cases`（全本語料庫：鎖麟嚢・沙家浜・白蛇伝・朝陽溝／竇娥冤・救風塵・牡丹亭・桃花扇・長生殿） |
 | 3 | `sw-american-case-studies` · `sw-japanese-screenwriting` · `sw-korean-french-screenwriting` · `sw-chinese-series-practice` · `sw-industry-business` |
 | 4 | `chekhov-dramaturgy` · `ozu-screenplay-style` · `succession-series-writing` · `sw-series-case-studies` |
 
-各スキルは `SKILL.md`（原則・チェックリスト・手順）を持ち、ほとんどが `reference.md`（表・分析・引用）を伴います。各スキルが何を含み、どの本から来ているかの完全な対照表は [English README](README.md#how-the-skills-are-organised) にあります。
+各スキルは本体ファイル（原則・チェックリスト・手順）を持ち、ほとんどが参照ファイル（表・分析・引用）を伴います。各スキルが何を含み、どの本から来ているかの完全な対照表は [English README](README.md#how-the-skills-are-organised) にあります。
 
 日本語に関わる部分：`sw-japanese-screenwriting` は日本の監督・脚本家 10 人の方法（構成先行と断片先行、小ネタ帳、「もし＋しかも」、人物＝俳優＋欠点、主題は後から立ち上がる）、`ozu-screenplay-style` は小津安二郎の脚本 6 本を作法として読み解いたもの、`sw-format-adaptation` は柱・ト書き・セリフの日本式書式、`sw-series-case-studies` には坂元裕二『花束みたいな恋をした』の場面統計が入っています。
 
@@ -117,6 +117,14 @@ codex plugin marketplace add jtydhr88/screenwriting-skills
 **出版シナリオ・戯曲 12 巻**：チェーホフ戯曲全集、小津安二郎脚本集、Jesse Armstrong *Succession: The Complete Scripts* I–IV、Aaron Sorkin *The West Wing Script Book*、David Chase 他 *The Sopranos*、Julian Fellowes *Downton Abbey* Season Two、Phoebe Waller-Bridge *Fleabag: The Scriptures*、坂元裕二『花束みたいな恋をした』、盧熙京『世界で最も美しい別れ』。
 
 完全な書誌は [English README](README.md#source-books) を参照。
+
+## 技術メモ
+
+- **スキルのファイル**：本体ファイルは `SKILL.md`、参照ファイルは `reference.md` です。
+- **用語表**：[`sw-workflow/terms.md`](plugins/screenwriting/skills/sw-workflow/terms.md)。
+- **ストーリーバイブル**：`sw-workflow` は企画の状態を `story-bible.md` というファイルに記録します。
+
+完全な一覧は [English README](README.md#technical-notes) を参照。
 
 ## ライセンス
 

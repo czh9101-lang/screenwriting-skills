@@ -4,7 +4,7 @@
 
 시나리오·드라마 극본·극작법을 위한 26개의 에이전트 스킬([Claude Code](https://docs.anthropic.com/en/docs/claude-code/skills) 및 [OpenAI Codex](https://developers.openai.com/codex/build-skills) 지원). 47권의 작법서와 23권의 출간 대본·악보·희곡(중국·미국·영국·일본·한국)에서 추출했습니다.
 
-`SKILL.md` 파일은 공개 규격인 [agentskills.io](https://agentskills.io) 표준을 따르며 두 에이전트가 공유합니다. 한 번 설치하면 어디서든 작동합니다.
+스킬 파일은 공개 규격인 [agentskills.io](https://agentskills.io) 표준을 따르며 두 에이전트가 공유합니다. 한 번 설치하면 어디서든 작동합니다.
 
 **한국어로 그냥 질문하세요.** 스킬 본문은 중국어로 작성되어 있습니다. 출처 대부분이 중국어 원저 또는 중국어 번역본이기 때문입니다. 이는 본문이 놓인 자리의 문제일 뿐이라, 한국어로 물으면 한국어로 답합니다. 왜 언어별로 트리를 나누지 않는지는 [다국어 지원](#다국어-지원)을 참고하세요.
 
@@ -71,8 +71,8 @@ codex plugin marketplace add jtydhr88/screenwriting-skills
 그래서 선은 소스 쪽에 긋고, 나머지는 런타임이 처리합니다:
 
 - **출력 언어는 질문 언어를 따른다.** 한국어로 물으면 한국어로 답합니다. 옵션도, 별도 설치도 필요 없습니다.
-- **용어는 원어에 고정한다.** 이 분야의 전문 용어는 원래 영어입니다. *logline*, *act out*, *beat sheet*, *showrunner*, *staff writer*. 출처의 중국어(計程繩, 出幕, 節拍表, 劇目管理人, 試用編劇)가 오히려 번역어이고, 역자마다 선택이 다릅니다. [`sw-workflow/terms.md`](plugins/screenwriting/skills/sw-workflow/terms.md)가 각 개념을 원어에 대응시키므로 에이전트는 단어를 **복원**합니다. 그리고 이 한 장의 표가 모든 언어에 동시에 작동합니다. 한국어로 쓰는 작가도 현장에서는 act out, logline이라고 하기 때문입니다.
-- **대응어가 없는 말은 원어 그대로 두고 설명을 붙인다.** 戏眼, 扣子 같은 말은 억지로 영어에 밀어 넣지 않고 `戏眼 (xìyǎn — 각 회차에서 한마디로 지목할 수 있는 핵심 볼거리)` 형태로 나옵니다.
+- **용어는 원어에 고정한다.** 이 분야의 전문 용어는 원래 영어입니다. *logline*, *act out*, *beat sheet*, *showrunner*, *staff writer*. 출처의 중국어(計程繩, 出幕, 節拍表, 劇目管理人, 試用編劇)가 오히려 번역어이고, 역자마다 선택이 다릅니다. `sw-workflow`의 용어표가 각 개념을 원어에 대응시키므로 에이전트는 단어를 **복원**합니다. 그리고 이 한 장의 표가 모든 언어에 동시에 작동합니다. 한국어로 쓰는 작가도 현장에서는 act out, logline이라고 하기 때문입니다.
+- **대응어가 없는 말은 원어 그대로 두고 설명을 붙인다.** 戏眼, 扣子 같은 말은 `戏眼 (xìyǎn — 각 회차에서 한마디로 지목할 수 있는 핵심 볼거리)` 형태로 나옵니다.
 - **대본 본문은 작품 자신의 언어를 유지한다.** 중국어 대본을 한국어로 논의하는 것은 흔한 일입니다. 대화의 언어는 바뀌어도 원고의 언어는 바뀌지 않습니다.
 
 이와 맞바꾸어 잃는 것은 **감사 가능성**입니다. 중국어를 읽지 못하면 지시 파일 자체는 읽을 수 없고, 그에 대한 에이전트의 보고만 읽을 수 있습니다. 이것은 실재하는 비용이며, 삭제된 영어판이 유일하게 정말로 사들였던 것이었습니다. 그러나 영구적인 5중 유지보수 부담에 값하지는 않았습니다.
@@ -99,12 +99,12 @@ codex plugin marketplace add jtydhr88/screenwriting-skills
 
 | 계층 | 스킬 |
 |---|---|
-| 1 | `sw-workflow`(진행 관리와 `story-bible.md`) · `sw-story-structure` · `sw-premise-theme` · `sw-character-conflict` · `sw-dialogue` · `sw-scene-craft` · `sw-format-adaptation` |
+| 1 | `sw-workflow`(진행 관리와 스토리 바이블) · `sw-story-structure` · `sw-premise-theme` · `sw-character-conflict` · `sw-dialogue` · `sw-scene-craft` · `sw-format-adaptation` |
 | 2 | 시리즈: `sw-series-structure` · `sw-series-engine-bible` · `sw-writers-room` · `sw-sitcom-comedy`<br>무대: `sw-chinese-opera-banqiang` · `sw-chinese-opera-qupai`(두 성강 체계의 방법) · `sw-chinese-opera-banqiang-cases` · `sw-chinese-opera-qupai-cases`(전본 자료집: 쇄린낭·사가빈·백사전·조양구／두아원·구풍진·모란정·도화선·장생전) |
 | 3 | `sw-american-case-studies` · `sw-japanese-screenwriting` · `sw-korean-french-screenwriting` · `sw-chinese-series-practice` · `sw-industry-business` |
 | 4 | `chekhov-dramaturgy` · `ozu-screenplay-style` · `succession-series-writing` · `sw-series-case-studies` |
 
-각 스킬은 `SKILL.md`(원칙·체크리스트·작업 순서)를 갖고, 대부분 `reference.md`(표·분석·인용)를 함께 둡니다. 어떤 스킬이 무엇을 담고 어느 책에서 왔는지에 대한 완전한 대조표는 [English README](README.md#how-the-skills-are-organised)에 있습니다.
+각 스킬은 본문 파일(원칙·체크리스트·작업 순서)을 갖고, 대부분 참고 파일(표·분석·인용)을 함께 둡니다. 어떤 스킬이 무엇을 담고 어느 책에서 왔는지에 대한 완전한 대조표는 [English README](README.md#how-the-skills-are-organised)에 있습니다.
 
 한국 관련 부분: `sw-korean-french-screenwriting`은 한국과 프랑스의 방법(감정을 먼저 쓰기, 취재 우선, 약속으로서의 장르, 두 번의 반전, 대사는 마지막에, 공동 집필)을 다루고, `sw-series-case-studies`에는 노희경 『세상에서 가장 아름다운 이별』의 7장 구조·4부 매핑·가족 갈등망·이별 배치 분석이 들어 있습니다.
 
@@ -117,6 +117,14 @@ codex plugin marketplace add jtydhr88/screenwriting-skills
 **출간 대본·희곡 12권**: 체호프 희곡 전집, 오즈 야스지로 각본집, Jesse Armstrong *Succession: The Complete Scripts* I–IV, Aaron Sorkin *The West Wing Script Book*, David Chase 외 *The Sopranos*, Julian Fellowes *Downton Abbey* Season Two, Phoebe Waller-Bridge *Fleabag: The Scriptures*, 사카모토 유지 『꽃다발 같은 사랑을 했다』, 노희경 『세상에서 가장 아름다운 이별』.
 
 완전한 서지는 [English README](README.md#source-books)를 참고하세요.
+
+## 기술 설명
+
+- **스킬 파일**: 본문 파일은 `SKILL.md`, 참고 파일은 `reference.md`입니다.
+- **용어표**: [`sw-workflow/terms.md`](plugins/screenwriting/skills/sw-workflow/terms.md).
+- **스토리 바이블**: `sw-workflow`는 프로젝트 상태를 `story-bible.md`라는 파일에 기록합니다.
+
+완전한 목록은 [English README](README.md#technical-notes)를 참고하세요.
 
 ## 라이선스
 

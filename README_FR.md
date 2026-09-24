@@ -4,9 +4,9 @@
 
 26 compétences d'agent (« skills ») pour le scénario, l'écriture télévisuelle et la dramaturgie, destinées à [Claude Code](https://docs.anthropic.com/en/docs/claude-code/skills) et [OpenAI Codex](https://developers.openai.com/codex/build-skills). Distillées de 47 ouvrages de méthode et de 23 volumes de scénarios, partitions et pièces publiés (chinois, américains, britanniques, japonais et coréens).
 
-Les fichiers `SKILL.md` suivent la norme ouverte [agentskills.io](https://agentskills.io) et sont partagés par les deux agents : une seule installation, et les deux fonctionnent.
+Les fichiers des skills suivent la norme ouverte [agentskills.io](https://agentskills.io) et sont partagés par les deux agents : une seule installation, et les deux fonctionnent.
 
-**Posez vos questions en français.** Le corps des skills est rédigé en chinois, parce que la plupart des sources sont des originaux chinois ou des traductions chinoises. C'est un détail d'implémentation, pas une restriction : demandez en français, vous obtenez du français. Voir [Prise en charge multilingue](#prise-en-charge-multilingue) pour comprendre pourquoi il n'existe qu'un seul arbre source et non cinq.
+**Posez vos questions en français.** Le corps des skills est rédigé en chinois, parce que la plupart des sources sont des originaux chinois ou des traductions chinoises. C'est un détail d'implémentation : demandez en français, vous obtenez du français. Voir [Prise en charge multilingue](#prise-en-charge-multilingue) pour comprendre pourquoi il n'existe qu'un seul arbre source.
 
 ## Installation
 
@@ -71,7 +71,7 @@ C'est une décision réfléchie, et ce n'était pas la première. Il y a eu une 
 La ligne est donc tracée à la source, et l'exécution fait le reste :
 
 - **La langue de sortie suit celle de la question.** Demandez en français, vous obtenez du français. Aucun réglage, aucune installation séparée.
-- **La terminologie est ancrée au terme d'origine.** Le vocabulaire de ce métier est à l'origine anglais : *logline*, *act out*, *beat sheet*, *showrunner*, *staff writer*. Le chinois des ouvrages sources (計程繩, 出幕, 節拍表, 劇目管理人, 試用編劇) est la traduction, et les traducteurs n'ont pas fait les mêmes choix. [`sw-workflow/terms.md`](plugins/screenwriting/skills/sw-workflow/terms.md) rattache chaque notion à son terme d'origine : l'agent **restitue** le mot au lieu d'en inventer un. Et cette table unique sert toutes les langues à la fois, car un scénariste francophone dit lui aussi *act out* et *logline*.
+- **La terminologie est ancrée au terme d'origine.** Le vocabulaire de ce métier est à l'origine anglais : *logline*, *act out*, *beat sheet*, *showrunner*, *staff writer*. Le chinois des ouvrages sources (計程繩, 出幕, 節拍表, 劇目管理人, 試用編劇) est la traduction, et les traducteurs n'ont pas fait les mêmes choix. La table des termes de `sw-workflow` rattache chaque notion à son terme d'origine : l'agent **restitue** le mot. Et cette table unique sert toutes les langues à la fois, car un scénariste francophone dit lui aussi *act out* et *logline*.
 - **Les termes sans équivalent gardent leur forme d'origine, avec une glose.** 戏眼 et 扣子 sortent sous la forme `戏眼 (xìyǎn — l'attrait central d'un épisode, énonçable en une phrase)`.
 - **Votre scénario reste dans la langue de votre scénario.** Discuter en français d'un scénario chinois est courant : la conversation change de langue, pas le texte.
 
@@ -87,7 +87,7 @@ L'opéra chinois, ce sont **deux écritures**. L'axe qui compte est le système 
 
 ## Les quatre couches
 
-Un long métrage utilise les couches 1, 3 et 4 ; une série les utilise toutes les quatre, car la couche série ne s'ajoute pas à côté de la couche générale : elle **remplace** la « structure conçue pour un film » par une logique de moteur et de saison.
+Un long métrage utilise les couches 1, 3 et 4 ; une série les utilise toutes les quatre, car la couche série **remplace** la « structure conçue pour un film » par une logique de moteur et de saison.
 
 ```
 1. Dramaturgie générale  prémisse · structure · personnage · dialogue · scène · format · conduite de projet
@@ -99,12 +99,12 @@ Un long métrage utilise les couches 1, 3 et 4 ; une série les utilise toutes l
 
 | Couche | Skills |
 |---|---|
-| 1 | `sw-workflow` (conduite de projet et `story-bible.md`) · `sw-story-structure` · `sw-premise-theme` · `sw-character-conflict` · `sw-dialogue` · `sw-scene-craft` · `sw-format-adaptation` |
+| 1 | `sw-workflow` (conduite de projet et story bible) · `sw-story-structure` · `sw-premise-theme` · `sw-character-conflict` · `sw-dialogue` · `sw-scene-craft` · `sw-format-adaptation` |
 | 2 | Série : `sw-series-structure` · `sw-series-engine-bible` · `sw-writers-room` · `sw-sitcom-comedy`<br>Scène : `sw-chinese-opera-banqiang` · `sw-chinese-opera-qupai` (les méthodes des deux systèmes vocaux) · `sw-chinese-opera-banqiang-cases` · `sw-chinese-opera-qupai-cases` (textes intégraux : 锁麟囊, 沙家浜, 白蛇传, 朝阳沟 / 窦娥冤, 救风尘, 牡丹亭, 桃花扇, 长生殿) |
 | 3 | `sw-american-case-studies` · `sw-japanese-screenwriting` · `sw-korean-french-screenwriting` · `sw-chinese-series-practice` · `sw-industry-business` |
 | 4 | `chekhov-dramaturgy` · `ozu-screenplay-style` · `succession-series-writing` · `sw-series-case-studies` |
 
-Chaque skill possède un `SKILL.md` (principes, listes de contrôle, marche à suivre), et presque tous un `reference.md` (tableaux, analyses détaillées, citations). Le tableau complet de ce que contient chaque skill et des ouvrages dont il provient se trouve dans le [README anglais](README.md#how-the-skills-are-organised).
+Chaque skill possède un fichier principal (principes, listes de contrôle, marche à suivre), et presque tous un fichier de référence (tableaux, analyses détaillées, citations). Le tableau complet de ce que contient chaque skill et des ouvrages dont il provient se trouve dans le [README anglais](README.md#how-the-skills-are-organised).
 
 Côté français : `sw-korean-french-screenwriting` rassemble les méthodes coréennes et françaises : écrire l'émotion d'abord, la documentation avant tout, le genre comme promesse faite au spectateur, les deux renversements, le dialogue écrit en dernier, l'écriture collective.
 
@@ -117,6 +117,14 @@ Côté français : `sw-korean-french-screenwriting` rassemble les méthodes cor�
 **Scénarios et pièces publiés, 12 volumes** : Œuvres théâtrales complètes de Tchekhov, Scénarios d'Ozu Yasujirō, Jesse Armstrong *Succession: The Complete Scripts* I–IV, Aaron Sorkin *The West Wing Script Book*, David Chase et al. *The Sopranos*, Julian Fellowes *Downton Abbey* saison 2, Phoebe Waller-Bridge *Fleabag: The Scriptures*, Sakamoto Yūji *Au bout du compte, je t'aimais*, Noh Hee-kyung *Le plus bel adieu du monde*.
 
 Bibliographie complète dans le [README anglais](README.md#source-books).
+
+## Notes techniques
+
+- **Fichiers d'un skill** : le fichier principal est `SKILL.md`, le fichier de référence `reference.md`.
+- **Table des termes** : [`sw-workflow/terms.md`](plugins/screenwriting/skills/sw-workflow/terms.md).
+- **Story bible** : `sw-workflow` tient l'état du projet dans le fichier `story-bible.md`.
+
+Liste complète dans le [README anglais](README.md#technical-notes).
 
 ## Licence
 
